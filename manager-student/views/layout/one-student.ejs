@@ -1,0 +1,26 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date Of Birth</th>
+            <th scope="col">Adress</th>
+            <th scope="col">Email</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <% if(student) { %>
+            <tr>
+                <th scope="row"><%= student.id %></th>
+                <td><%= student.name %></td>
+                <td><%= student.dob %></td>
+                <td><%= student.adress %></td>
+                <td><%= student.email %></td>
+                <td><a href="/update/<%=indexStudent%>"><ion-icon name="copy-outline"></ion-icon></a></td>
+                <td><a href="/delete/<%=indexStudent%>"><ion-icon name="trash-outline"></ion-icon></a></td>
+            </tr>
+        <% } %>
+        
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>To Do List</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row title">
+            <div class="col-xs-12 col-xl-12">
+                <nav class="navbar 
+                navbar-expand-lg
+                navbar-light
+                bg-primary 
+                ">
+                    <h1 class="navbar-brand mx-auto">TODO LIST</h1>
+                </nav>
+            </div>
+        </div>
+
+        <div class="row input-name">
+            <div class="col-xs-12 col-xl-12">
+                <form action="/todo" method="POST">
+                    <div class="input-group mb-3">
+                        <input name="todo" id="todo" type="text" class="form-control" placeholder="Name Todo List" aria-label="Recipient's username" aria-describedby="button-addon2">
+                        <div class="input-group-append">
+                          <button class="btn btn-outline-secondary btn-success" type="submit" id="button-addon2">Add</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row justify-content-center list-todo">
+            <div class="col-md-8 col-xl-10">
+                <ul class="list-group">
+                    <% todoList.forEach((element,index) => { %>
+                        <li class="list-group-item 
+                        <% if(element.done == true){ %>
+                            <%='done'%>
+                        <% } %>
+                        ">
+                        <%=element.name%>
+                            <div class="button-group">
+                                <a href="/complete/<%=element._id%>"><button type="button" class="btn btn-primary">Complete</button></a>
+                                <a href="/delete/<%=element._id%>"><button type="button" class="btn btn-danger">Delete</button></a>
+                            </div>
+                        </li>
+                    <% }); %>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

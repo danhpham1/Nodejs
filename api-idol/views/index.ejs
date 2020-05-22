@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Hot Idol</title>
+</head>
+<body>
+        <div class="title">
+            <nav class="navbar navbar-light bg-light">
+                <h1 style="font-size: 40px;" class="navbar-brand mx-auto">IDOL</h1>
+            </nav>
+        </div>
+        
+        <div class="form-find">
+            <form action="/" method="POST">
+                <div class="input-group mb-3">
+                    <input type="text" name="name" class="form-control" placeholder="Name idol" aria-label="Recipient's username" aria-describedby="button-addon2">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row justify-content-center row-card">
+                    <% listIdol.forEach(element => { %>
+                        <div class="col-lg-3 col-md-5 col-xm-12">
+                            <div class="card" style="width: 18rem;">
+                                <img src="<%= element.imageUrl %>" class="card-img-top " alt="...">
+                                <div class="card-body">
+                                  <p class="card-text">Name:   <span><%=element.name%></span></p>
+                                  <p class="card-text">japanName:   <span><%=element.japanName%></span></p>
+                                  <p class="card-text">Bust:   <span><%=element.bust%></span></p>
+                                  <p class="card-text">Waist:   <span><%=element.waist%></span></p>
+                                  <p class="card-text">Hip:   <span><%=element.hip%></span></p>
+                                  <p class="card-text">BirthDay:   <span><%=element.birthday%></span></p>
+                                  <a href="<%=element.siteUrl%>" class="btn btn-primary stretched-link">Website Demonstration</a>
+                                </div>
+                              </div>
+                        </div>
+                    <% }); %>
+            </div>
+        </div>
+
+        <div class="page">
+            <nav aria-label="Page navigation example ">
+                <ul class="pagination justify-content-center">
+                <% if(pageCurrent > 1){ %>
+                    <li class="page-item"><a class="page-link" href="/?page=<%=pageCurrent - 1%>">Previous</a></li>
+                <% } %>
+                  
+                <%for(let i = 1; i <= totalPage; i++){ %>
+                    <li class="page-item"><a class="page-link" href="/?page=<%=i%>"><%=i%></a></li>
+                <% } %>
+                
+                <% if(pageCurrent < totalPage){ %>
+                    <li class="page-item"><a class="page-link" href="/?page=<%=pageCurrent + 1%>">Next</a></li>
+                <% } %>
+                </ul>
+              </nav>
+        </div>
+</body>
+</html>
