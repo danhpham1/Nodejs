@@ -12,7 +12,7 @@ const findStudentController = require('../controller/find-student');
 var router = express.Router();
 router.use(bodyParser.urlencoded({extended:false}))
 
-router.get('/',homeController.index);
+router.get('/',homeController.getIndex);
 
 router.get('/:name',layoutController.getLayout);
 

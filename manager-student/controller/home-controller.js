@@ -1,9 +1,10 @@
 var studentModel = require('../models/student'); 
 
-module.exports.index = (req,res)=>{
+module.exports.getIndex = (req,res)=>{
     // console.log(studentModel.nameLayout);
     // console.log(req.query.page);
 
+    // console.log(req.session);
     let page = parseInt(req.query.page) || 1;
     let perPage = 3;
 
@@ -21,7 +22,8 @@ module.exports.index = (req,res)=>{
                             activePage:page,
                             updateStudent:studentModel.student,
                             student:studentModel.student,
-                            indexStudent:studentModel.index
+                            indexStudent:studentModel.index,
+                            username:req.session.passport.user,
                             });
     }else{
         
@@ -31,6 +33,8 @@ module.exports.index = (req,res)=>{
                             activePage:page,
                             updateStudent:studentModel.student,
                             student:studentModel.student,
-                            indexStudent:studentModel.index});
+                            indexStudent:studentModel.index,
+                            username:req.session.passport.user,
+                            });
     }
 }
