@@ -10,7 +10,8 @@ const findStudentController = require('../controller/find-student');
 
 
 var router = express.Router();
-router.use(bodyParser.urlencoded({extended:false}))
+router.use(bodyParser.urlencoded({extended:true}))
+
 
 router.get('/',homeController.getIndex);
 
@@ -18,9 +19,11 @@ router.get('/:name',layoutController.getLayout);
 
 router.post('/:name',formController.processPOST);
 
-router.get('/update/:index',formController.processGET);
 
-router.get('/delete/:index',deleteController.deleteStudent);
+
+router.get('/update/:id',formController.processGET);
+
+router.get('/delete/:id',deleteController.deleteStudent);
 
 router.get('/sort/student',sortStudentController.sortStudent);
 // router.get('/sort/student',(req,res)=>{

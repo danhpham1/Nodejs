@@ -1,25 +1,12 @@
 var studentModel = require('../models/student');
+const studentSchema = require('../models/studentSchema');
 
-module.exports.findStudent = (req,res)=>{
+module.exports.findStudent = async (req,res)=>{
     // console.log(req.body);
     studentModel.nameLayout = 'findtable';
-    let index = 0;
-
-    let student = (studentModel.studentList.find(function(el,indx){
-        index = indx;
-        return el.id == parseInt(req.body.id);
-    }));
-
-    
-    if(student){
-        studentModel.student = student;
-        studentModel.index = index;
-    }else{
-        studentModel.student = undefined;
-        studentModel.index = index;
-    }
-    console.log(index);
-    console.log(student);
+    const studentFind = await studentSchema.findOne({"studentId":req.body.id});
+    // console.log(studentFind);
+    req.session.studentFind = studentFind;
     // console.log(studentModel.studentList)
     res.redirect('/');
 }

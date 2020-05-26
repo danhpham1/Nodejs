@@ -4,7 +4,7 @@
                             <th scope="col">ID</th>
                             <th scope="col">Name</th>
                             <th scope="col">Date Of Birth</th>
-                            <th scope="col">Adress</th>
+                            <th scope="col">Address</th>
                             <th scope="col">Email</th>
                             <th></th>
                         </tr>
@@ -12,13 +12,13 @@
                     <tbody>
                         <% studentList.forEach((element,index) => { %>
                             <tr>
-                                <th scope="row"><%= element.id %></th>
+                                <th scope="row"><%= element.studentId %></th>
                                 <td><%= element.name %></td>
                                 <td><%= element.dob %></td>
-                                <td><%= element.adress %></td>
+                                <td><%= element.address %></td>
                                 <td><%= element.email %></td>
-                                <td><a href="/update/<%=index%>"><ion-icon name="copy-outline"></ion-icon></a></td>
-                                <td><a href="/delete/<%=index%>"><ion-icon name="trash-outline"></ion-icon></a></td>
+                                <td><a href="/update/<%=element._id%>"><ion-icon name="copy-outline"></ion-icon></a></td>
+                                <td><a href="/delete/<%=element._id%>"><ion-icon name="trash-outline"></ion-icon></a></td>
                             </tr>
                         <% }); %>
                     </tbody>
