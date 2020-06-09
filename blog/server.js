@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
 //require
 const routerIndex = require('./routers/admin/routerIndex');
 
@@ -22,7 +23,10 @@ mongoose.connect('mongodb://127.0.0.1:27017/blog',{
 app.set('view engine','ejs');
 app.set('views',__dirname + '/views');
 app.use(express.static('public'));
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
+
 
 
 

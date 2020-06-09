@@ -1,7 +1,10 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const multer = require('multer');
 const path = require('path');
 const routerIndex = express.Router();
+
+routerIndex.use(bodyParser.urlencoded({extended:true}));
 
 var storage = multer.diskStorage({
     destination:function(req,file,cb){
@@ -40,11 +43,27 @@ routerIndex.post('/title/delete/:id',controllerTitle.processDeleteTitle);
 
 //Posts
 
+//get index
 routerIndex.get('/posts',controllerPost.getPostIndex);
 
+
+//add
 routerIndex.get('/post/add',controllerPost.getPostAdd);
 
 routerIndex.post('/post/process-add',upload.single('logo'),controllerPost.processPost);
+
+
+//edit
+routerIndex.get('/post/edit/:id',controllerPost.getPostEdit);
+
+routerIndex.post('/post/process-edit',upload.none(),controllerPost.processEdit);
+
+
+//delte
+routerIndex.post('/post/delete/:id',controllerPost.processDelete);
+
+
+
 
 
 module.exports = routerIndex;
