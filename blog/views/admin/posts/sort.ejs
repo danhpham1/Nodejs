@@ -12,8 +12,7 @@
 
     <div class="col-lg-4 col-md-4 col-sm-12 ">
         <form action="/admin/post/search" method="POST" class="form-inline d-flex justify-content-end">
-            <input required type="text" class="form-control d-inline" name="keyword" id="keyword"
-                placeholder="Name Title">
+            <input required type="text" class="form-control d-inline" name="keyword" placeholder="Name Title">
             <button class="btn btn-outline-secondary float-left ml-1" type="submit" id="button-addon2">Search</button>
         </form>
     </div>
@@ -78,16 +77,17 @@
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
                 <% if(currentPage > 1){ %>
-                <li class="page-item"><a class="page-link" href="/admin/posts?page=<%=currentPage - 1%>">Previous</a>
+                <li class="page-item"><a class="page-link"
+                        href="/admin/post/sort?page=<%=currentPage - 1%>">Previous</a>
                 </li>
                 <% } %>
 
                 <% for(let i = 0; i < totalPage; i++){ %>
-                <li class="page-item"><a class="page-link" href="/admin/posts?page=<%=i+1%>"><%=i+1%></a></li>
+                <li class="page-item"><a class="page-link" href="/admin/post/sort?page=<%=i+1%>"><%=i+1%></a></li>
                 <% } %>
 
                 <% if(currentPage < totalPage){ %>
-                <li class="page-item"><a class="page-link" href="/admin/posts?page=<%=currentPage + 1%>">Next</a>
+                <li class="page-item"><a class="page-link" href="/admin/post/sort?page=<%=+currentPage+1%>">Next</a>
                 </li>
                 <% } %>
 
